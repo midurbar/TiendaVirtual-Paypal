@@ -1,11 +1,11 @@
 <?php
-    const BASE_URL = "http://localhost/eccommerce/";
+    const BASE_URL = "http://localhost/TiendaVirtual-Paypal/";
     const HOST = "localhost";
     const USER = "root";
     const PASS = "";
-    const DB = "carrito";
+    const DB = "tienda_virtual";
     const CHARSET = "charset=utf8";
     const TITLE = "TIENDA ONLINE";
-    const MONEDA = "USD";
+    const MONEDA = "EUR";
     const CLIENT_ID = "";
     ?>
