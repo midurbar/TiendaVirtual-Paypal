@@ -101,4 +101,3 @@
   <script src="<?php echo BASE_URL; ?>assets/js/templatemo.js"></script>
   <script src="<?php echo BASE_URL; ?>assets/js/all.min.js"></script>
   <!-- End Script -->
-  </body>
