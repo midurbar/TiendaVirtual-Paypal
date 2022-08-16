@@ -12,6 +12,11 @@
   <!-- Load fonts style after rendering the layout styles -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+
+    <!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick/slick-theme.css">
+
 </head>
 
 <body>
@@ -60,13 +65,13 @@
         <div class="flex-fill">
           <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="<?php echo BASE_URL . 'principal/about' ;?>">Servicios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="shop.html">Shop</a>
+              <a class="nav-link" href="<?php echo BASE_URL . 'principal/shop' ;?>">Tienda</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html">Contact</a>
+              <a class="nav-link" href="<?php echo BASE_URL . 'principal/contact' ;?>">Contactos</a>
             </li>
           </ul>
         </div>
