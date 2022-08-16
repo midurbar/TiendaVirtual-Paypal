@@ -51,7 +51,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
       <a class="navbar-brand text-util logo h3 align-self-center" href="<?php echo BASE_URL;?>">
-        Tienda Virtual
+      <?php echo TITLE;?>
       </a>
 
       <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"

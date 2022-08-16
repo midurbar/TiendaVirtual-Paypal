@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/servicios.png" alt="About Hero" width="200">
+                    <img src="<?php echo BASE_URL; ?>assets/img/servicios.png" alt="About Hero" width="200">
                 </div>
             </div>
         </div>
