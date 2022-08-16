@@ -1,5 +1,5 @@
 <?php
-    const BASE_URL = "http://localhost/TiendaVirtual-Paypal/";
+    const BASE_URL = "http://localhost/tienda-virtual/";
     const HOST = "localhost";
     const USER = "root";
     const PASS = "";
