@@ -33,8 +33,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 
   <!-- Slick -->
-  <link rel="stylesheet" type="text/css" href="assets/css/slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/slick/slick-theme.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick.css'; ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_URL . 'assets/css/slick/slick-theme.css'; ?>">
 
 </head>
 

@@ -127,11 +127,11 @@
                                 <div class="row pb-3">
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-util btn-lg" name="submit"
-                                            value="buy">Buy</button>
+                                            value="buy">Comprar</button>
                                     </div>
                                     <div class="col d-grid">
                                         <button type="submit" class="btn btn-util btn-lg" name="submit"
-                                            value="addtocard">Add To Cart</button>
+                                            value="addtocard">Añadir al Carrito</button>
                                     </div>
                                 </div>
                             </form>
@@ -496,7 +496,7 @@
     <?php include_once 'Views/template-principal/footer.php';?>
 
     <!-- Start Slider Script -->
-    <script src="assets/css/slick/slick.min.js"></script>
+    <script src="<?php echo BASE_URL . 'assets/css/slick/slick.min.js'; ?>"></script>
     <script>
         $('#carousel-related-product').slick({
             infinite: true,
