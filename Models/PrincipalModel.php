@@ -1,5 +1,5 @@
 <?php
-    class HomeModel extends Query{
+    class PrincipalModel extends Query{
      
         public function __construct()
         {
@@ -9,12 +9,6 @@
         public function getCategorias()
         {
             $sql="SELECT * FROM categorias";
-            return $this->selectAll($sql);
-        }
-
-        public function getNuevoProductos()
-        {
-            $sql="SELECT * FROM productos ORDER BY id DESC LIMIT 12";
             return $this->selectAll($sql);
         }
     }
