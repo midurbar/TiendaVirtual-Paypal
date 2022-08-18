@@ -12,7 +12,7 @@
             return $this->selectAll($sql);
         }
 
-        public function getNuevoProductos()
+        public function getNuevosProductos()
         {
             $sql="SELECT * FROM productos ORDER BY id DESC LIMIT 12";
             return $this->selectAll($sql);

@@ -6,10 +6,10 @@
             parent::__construct();
         }
 
-        public function getCategorias()
+        public function getProducto($id_producto)
         {
-            $sql="SELECT * FROM categorias";
-            return $this->selectAll($sql);
+            $sql="SELECT * FROM productos WHERE id=$id_producto";
+            return $this->select($sql);
         }
     }
      
