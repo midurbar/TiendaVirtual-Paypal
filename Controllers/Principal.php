@@ -23,6 +23,9 @@
             $desde = ($pagina -1) * $porPagina;
             $data['title'] = 'Nuestros productos';
             $data['productos'] = $this->model->getProductos($desde, $porPagina);
+            $data['pagina'] = $pagina;
+            $total = $this->model->getTotalProductos();
+            $data['total'] = ceil($total['total'] / $porPagina);
             $this->views->getView('principal', "shop", $data);
         }
         //Vista detail

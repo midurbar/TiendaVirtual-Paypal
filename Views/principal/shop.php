@@ -65,16 +65,25 @@
                     <?php } ?>
                 </div>
                 <div div="row">
-                    <ul class="pagination pagination-lg justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#"
+                        <ul class="pagination pagination-lg justify-content-end">
+                        <?php 
+                        $anterior= $data['pagina'] -1;
+                        $siguiente= $data['pagina'] +1;
+                        if ($data['pagina'] > 1) {
+                            echo '<li class="page-item">
+                                <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="'.$anterior.'"
                                 tabindex="-1">Anterior</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark"
-                                href="#">Siguiente</a>
-                        </li>
+                                </li>';
+                        }
+                        if ($data['total']>=$siguiente) {
+                            echo '<li class="page-item">
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-white"
+                            href="'.$siguiente.'">Siguiente</a>
+                            </li>';
+                        }
+                        ?>
                     </ul>
+
                 </div>
             </div>
 
