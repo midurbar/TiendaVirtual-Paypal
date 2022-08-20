@@ -16,9 +16,13 @@
             $this->views->getView('principal', "about", $data);
         }
         //Vista shop
-        public function shop()
+        public function shop($page)
         {
+            $pagina = (empty($page)) ? 1: $page;
+            $porPagina = 20;
+            $desde = ($pagina -1) * $porPagina;
             $data['title'] = 'Nuestros productos';
+            $data['productos'] = $this->model->getProductos($desde, $porPagina);
             $this->views->getView('principal', "shop", $data);
         }
         //Vista detail
