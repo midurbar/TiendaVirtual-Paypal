@@ -23,6 +23,12 @@
             $sql="SELECT COUNT(*) AS total FROM productos";
             return $this->select($sql);
         }
+        //obtener productos relacionados con la categoria
+        public function getProductosCat($id_categoria)
+        {
+            $sql="SELECT * FROM productos WHERE id_categoria=$id_categoria";
+            return $this->selectAll($sql);
+        }
     }
      
 ?>

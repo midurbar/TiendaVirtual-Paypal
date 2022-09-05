@@ -35,11 +35,19 @@
             $data['title'] = $data['producto']['nombre'];
             $this->views->getView('principal', "detail", $data);
         }
+        //Vista categorias
+        public function categorias($id_categoria)
+        {
+            $data['productos'] = $this->model->getProductosCat($id_categoria);
+            $data['title'] = 'Categorias';
+            $this->views->getView('principal', "categorias", $data);
+        }
         //Vista contact
         public function contact()
         {
             $data['title'] = 'Contactos';
             $this->views->getView('principal', "contact", $data);
         }
+        
     }
 ?>
