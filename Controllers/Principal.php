@@ -52,7 +52,7 @@
                 }
             }
             $pagina = (empty($page)) ? 1: $page;
-            $porPagina = 15;
+            $porPagina = 16;
             $desde = ($pagina -1) * $porPagina;
 
             $data['pagina'] = $pagina;
@@ -61,6 +61,7 @@
 
             $data['productos'] = $this->model->getProductosCat($id_categoria, $desde, $porPagina);
             $data['title'] = 'Categorias';
+            $data['id_categoria'] = $id_categoria;
             $this->views->getView('principal', "categorias", $data);
         }
         //Vista contact

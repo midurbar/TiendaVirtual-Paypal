@@ -69,16 +69,17 @@
                         <?php 
                         $anterior= $data['pagina'] -1;
                         $siguiente= $data['pagina'] +1;
+                        $url = BASE_URL . 'principal/shop/';
                         if ($data['pagina'] > 1) {
                             echo '<li class="page-item">
-                                <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="'.$anterior.'"
+                                <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="'. $url .$anterior.'"
                                 tabindex="-1">Anterior</a>
                                 </li>';
                         }
                         if ($data['total']>=$siguiente) {
                             echo '<li class="page-item">
                             <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-white"
-                            href="'.$siguiente.'">Siguiente</a>
+                            href="'. $url .$siguiente.'">Siguiente</a>
                             </li>';
                         }
                         ?>
