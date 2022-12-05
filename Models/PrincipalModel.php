@@ -36,9 +36,9 @@
             return $this->select($sql);
         }
         //obtener productos relacionados aleatorios
-        public function getAleatorios($id_categoria)
+        public function getAleatorios($id_categoria, $id_producto)
         {
-            $sql="SELECT * FROM productos WHERE id_categoria=$id_categoria ORDER BY RAND() LIMIT 20";
+            $sql="SELECT * FROM productos WHERE id_categoria=$id_categoria AND id != $id_producto ORDER BY RAND() LIMIT 20";
             return $this->selectAll($sql);
         }
     }
