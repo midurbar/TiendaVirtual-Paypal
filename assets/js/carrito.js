@@ -1,4 +1,5 @@
 const btnAddDeseo = document.querySelectorAll('btnAddDeseo');
+const btnDeseo = document.querySelector('#btnCantidadDeseo');
 let listaDeseo= [];
 document.addEventListener('DOMContentLoaded', function() {
     for (let i=0; i<btnAddDeseo.length; i++) {
@@ -9,10 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 })
 
-function agregarDeseo(idProd){
+function agregarDeseo(idProducto){
     listaDeseo.push({
-        "idProducto": idProd,
+        "idProducto": idProducto,
         "cantidad": 1
     })
     localStorage.setItem('listaDeseo', JSON.stringify(listaDeseo));
+    cantidadDeseo();
+}
+
+function cantidadDeseo() {
+    let listas=JSON.parse(localStorage.getItem('listaDeseo'));
+    console.log(listas);
 }
