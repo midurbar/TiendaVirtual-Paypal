@@ -78,5 +78,7 @@
             $data['title'] = 'Tu lista de deseos';
             $this->views->getView('principal', "deseo", $data);
         }
+        //Obtener productos a partir de la lista de deseos
+        
     }
 ?>
