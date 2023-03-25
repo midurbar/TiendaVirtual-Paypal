@@ -10,7 +10,8 @@ function getListaDeseo() {
     http.send(JSON.stringify(listaDeseo));
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
+            const res = JSON.parse(this.responseText);
+            console.log(res);
         }
     }
 }

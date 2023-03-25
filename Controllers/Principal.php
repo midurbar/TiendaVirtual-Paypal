@@ -79,6 +79,21 @@
             $this->views->getView('principal', "deseo", $data);
         }
         //Obtener productos a partir de la lista de deseos
-        
+        public function ListaDeseo() {
+            $datos = file_get_contents('php://input');
+            $json= json_decode($datos, true);
+            $array = array();
+            foreach ($json as $producto) {
+                $result = $this->model->getListaDeseo($producto['idProducto']);
+                $data['id'] = $result['id'];
+                $data['nombre'] = $result['nombre'];
+                $data['precio'] = $result['imagen'];
+                $data['cantidad'] = $producto['cantidad'];
+                $data['imagen'] = $result['imagen'];
+                array_push($array, $data);
+            }
+            echo json_encode($array, JSON_UNESCAPED_UNICODE);
+            die();
+        }
     }
 ?>
