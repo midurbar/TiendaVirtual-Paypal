@@ -87,7 +87,7 @@
                 $result = $this->model->getListaDeseo($producto['idProducto']);
                 $data['id'] = $result['id'];
                 $data['nombre'] = $result['nombre'];
-                $data['precio'] = $result['imagen'];
+                $data['precio'] = $result['precio'];
                 $data['cantidad'] = $producto['cantidad'];
                 $data['imagen'] = $result['imagen'];
                 array_push($array, $data);
