@@ -13,17 +13,17 @@ function getListaDeseo() {
             const res = JSON.parse(this.responseText);
             console.log(res);
             let html = '';
-            res.forEach(producto => {
+            res.productos.forEach(producto => {
                 html += `<tr>
                     <td>
                         <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
                     </td>
                     <td>${producto.nombre}</td>
-                    <td>${producto.precio}</td>
-                    <td>${producto.cantidad}</td>
+                    <td><span class="badge bg-warning">${producto.precio + ' ' + res.moneda}</span></td>
+                    <td><span class="badge bg-primary">${producto.cantidad}</span></td>
                     <td>
                         <button class="btn btn-danger btnEliminarDeseo" type="button" prod="${producto.id}"><i class="fas fa-trash"></i></button>
-                        <button class="btn btn-info" type="button"><i class="fas fa-cart-plus"></i></button>
+                        <button class="btn btn-primary" type="button"><i class="fas fa-cart-plus"></i></button>
                     </td>
                 </tr>`;
             });
@@ -45,7 +45,6 @@ function btnEliminarDeseo() {
 }
 
 function eliminarListaDeseo(idProducto) {
-    console.log(listaDeseo);
     for (let i=0; i< listaDeseo.length;i++) {
         if (listaDeseo[i].idProducto== idProducto) {
             listaDeseo.splice(i, 1);
