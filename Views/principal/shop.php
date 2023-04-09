@@ -43,7 +43,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="btn btn-util text-white mt-2" href="#">
+                                            <a class="btn btn-util text-white mt-2 btnAddCarrito" href="#" prod="<?php echo $producto['id']; ?>">
                                                 <i class="fas fa-cart-plus"></i>
                                             </a>
                                         </li>
