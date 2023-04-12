@@ -2,6 +2,8 @@ const btnAddDeseo = document.querySelectorAll('.btnAddDeseo');
 const btnAddCarrito = document.querySelectorAll('.btnAddCarrito');
 const btnDeseo = document.querySelector('#btnCantidadDeseo');
 const btnCarrito = document.querySelector('#btnCantidadCarrito');
+const verCarrito = document.querySelector('#verCarrito');
+const tableListaCarrito = document.querySelector('#tableListaCarrito tbody');
 let listaDeseo, listaCarrito;
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('listaDeseo') != null) {
@@ -24,6 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     cantidadDeseo();
     cantidadCarrito();
+
+    //Ver Carrito
+    const myModal = new bootstrap.Modal(document.getElementById('myModal'))
+    verCarrito.addEventListener('click', function(){
+        getListaCarrito();
+        myModal.show();
+    });
 })
 
 //Agregar Productos a la lista de deseos
@@ -105,5 +114,37 @@ function cantidadCarrito() {
         btnCarrito.textContent=listas.length;
     }else {
         btnCarrito.textContent=0;
+    }
+}
+
+//Ver carrito
+
+function getListaCarrito() {
+    const http = new XMLHttpRequest();
+    const url = base_url + 'principal/ListaCarrito';
+    http.open('POST', url, true);
+    http.send(JSON.stringify(listaCarrito));
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const res = JSON.parse(this.responseText);
+            console.log(res);
+            let html = '';
+            res.productos.forEach(producto => {
+                html += `<tr>
+                    <td>
+                        <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
+                    </td>
+                    <td>${producto.nombre}</td>
+                    <td>${producto.precio +' '+ res.moneda}</td>
+                    <td>${producto.cantidad}</td>
+                    <td>
+                        <button class="btn btn-danger btnEliminarDeseo" type="button" prod="${producto.id}"><i class="fas fa-trash"></i></button>
+                        <button class="btn btn-info" type="button"><i class="fas fa-cart-plus"></i></button>
+                    </td>
+                </tr>`;
+            });
+            tableListaCarrito.innerHTML = html;
+            //btnEliminarDeseo();
+        }
     }
 }

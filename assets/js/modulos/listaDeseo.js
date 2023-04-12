@@ -1,7 +1,7 @@
 const tableLista = document.querySelector("#tableListaDeseo tbody");
 document.addEventListener('DOMContentLoaded', function() {
     getListaDeseo();
-})
+});
 
 function getListaDeseo() {
     const http = new XMLHttpRequest();
@@ -13,13 +13,13 @@ function getListaDeseo() {
             const res = JSON.parse(this.responseText);
             console.log(res);
             let html = '';
-            res.forEach(producto => {
+            res.productos.forEach(producto => {
                 html += `<tr>
                     <td>
                         <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
                     </td>
                     <td>${producto.nombre}</td>
-                    <td>${producto.precio}</td>
+                    <td>${producto.precio +' '+ res.moneda}</td>
                     <td>${producto.cantidad}</td>
                     <td>
                         <button class="btn btn-danger btnEliminarDeseo" type="button" prod="${producto.id}"><i class="fas fa-trash"></i></button>
