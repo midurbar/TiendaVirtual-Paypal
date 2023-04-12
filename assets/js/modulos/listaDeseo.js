@@ -19,7 +19,6 @@ function getListaDeseo() {
                         <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
                     </td>
                     <td>${producto.nombre}</td>
-                    <span class="badge bg-info">
                     <td><span class="badge bg-warning">${producto.precio +' '+ res.moneda}</span></td>
                     <td><span class="badge bg-primary">${producto.cantidad}</span></td>
                     <td>
