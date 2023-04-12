@@ -135,15 +135,14 @@ function getListaCarrito() {
                         <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
                     </td>
                     <td>${producto.nombre}</td>
-                    <td>${producto.precio +' '+ res.moneda}</td>
-                    <td>${producto.cantidad}</td>
-                    <td>
-                        <button class="btn btn-danger btnEliminarDeseo" type="button" prod="${producto.id}"><i class="fas fa-trash"></i></button>
-                        <button class="btn btn-info" type="button"><i class="fas fa-cart-plus"></i></button>
-                    </td>
+                    <td><span class="badge bg-warning">${producto.precio +' '+ res.moneda}</span></td>
+                    <td><span class="badge bg-primary">${producto.cantidad}</span></td>
+                    <td>${producto.SubTotal}</td>
+                    <td><button class="btn btn-danger" type="button"><i class="fas fa-times-circle"></i></button></td>
                 </tr>`;
             });
             tableListaCarrito.innerHTML = html;
+            document.querySelector('#totalGeneral').textContent=res.total;
             //btnEliminarDeseo();
         }
     }
