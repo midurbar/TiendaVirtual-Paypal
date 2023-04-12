@@ -2,7 +2,6 @@ const btnAddDeseo = document.querySelectorAll('.btnAddDeseo');
 const btnAddCarrito = document.querySelectorAll('.btnAddCarrito');
 const btnDeseo = document.querySelector('#btnCantidadDeseo');
 const btnCarrito = document.querySelector('#btnCantidadCarrito');
-const verCarrito = document.querySelector('#verCarrito');
 let listaDeseo, listaCarrito;
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('listaDeseo') != null) {
@@ -25,12 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     cantidadDeseo();
     cantidadCarrito();
-
-    //Ver carrito
-    const myModal = new bootstrap.Modal(document.getElementById('myModal'));
-    verCarrito.addEventListener('click', function(){
-        myModal.show();
-    })
 })
 
 //Agregar Productos a la lista de deseos
