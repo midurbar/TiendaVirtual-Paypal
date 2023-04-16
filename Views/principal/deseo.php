@@ -16,21 +16,25 @@
 
         <div class="row">
                     <div class="col-md-12">
-                        <div class="card-body">
-                            <table class="table table-borderer" id="tableListaDeseo">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Producto</th>
-                                        <th>Precio</th>
-                                        <th>Cantidad</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <div class="card">
+                            <div class="card-body shadow-lg">
+                                <div class="table-responsive">
+                                    <table class="table table-borderer table-striped table-hover align-middle" id="tableListaDeseo">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Producto</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                     
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

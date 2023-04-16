@@ -7,28 +7,30 @@
          </button>
        </div>
        <div class="modal-body">
-         <table class="table table-bordered table-striped table-hover align-middle" id="tableListaCarrito">
-           <thead>
-             <tr>
-               <th>#</th>
-               <th>Producto</th>
-               <th>Precio</th>
-               <th>Cantidad</th>
-               <th>SubTotal</th>
-               <th></th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-               <td></td>
-             </tr>
-           </tbody>
-         </table>
+         <div class="table-responsive">
+          <table class="table table-borderer table-striped table-hover align-middle" id="tableListaCarrito">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>SubTotal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
        </div>
        <div class="modal-footer">
           <h3 id="totalGeneral"></h3>
