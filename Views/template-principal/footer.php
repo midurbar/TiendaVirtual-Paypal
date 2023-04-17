@@ -20,20 +20,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
          </div>
        </div>
        <div class="modal-footer">
           <h3 id="totalGeneral"></h3>
+          <a class="btn btn-outline-primary" href="<?php echo BASE_URL . 'clientes'; ?>">Procesar Pedido</a>
        </div>
      </div>
    </div>
