@@ -31,6 +31,63 @@
      </div>
    </div>
  </div>
+
+ <!-- Login Directo -->
+
+ <div id="modalLogin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header bg-primary text-white">
+         <h5 class="modal-title" id="titleLogin">Iniciar Sesión</h5>
+         <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+         </button>
+       </div>
+       <div class="modal-body m-3">
+          <form action="" method="get">
+              <div class="text-center">
+                <img class="img-thumbnail rounded-circle" src="<?php echo BASE_URL . 'assets/img/logo.png'; ?>" alt="" width="100">
+              </div>
+              <div class="row">
+                <div class="col-md-12" id="frmLogin">
+                  <div class="form-group mb-3">
+                    <label for="correoLogin"><i class="fas fa-envelope"></i> Correo</label>
+                    <input id="correoLogin" class="form-control" type="text" name="correoLogin" placeholder="Correo Electrónico">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="contLogin"><i class="fas fa-key"></i> Contraseña</label>
+                    <input id="contLogin" class="form-control" type="text" name="contLogin" placeholder="Contraseña">
+                  </div>
+                </div>
+
+                <!-- Formulario de Registro -->
+
+                <div class="col-md-12 d-none">
+                <div class="form-group mb-3">
+                    <label for="nombreRegistro"><i class="fas fa-list"></i> Nombre</label>
+                    <input id="nombreRegistro" class="form-control" type="text" name="nombreRegistro" placeholder="Correo Electrónico">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="correoRegistro"><i class="fas fa-envelope"></i> Correo</label>
+                    <input id="correoRegistro" class="form-control" type="text" name="correoRegistro" placeholder="Correo Electrónico">
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="contRegistro"><i class="fas fa-key"></i> Contraseña</label>
+                    <input id="contRegistro" class="form-control" type="text" name="contRegistro" placeholder="Contraseña">
+                  </div>
+                </div>
+
+              </div>
+
+          </form>
+       </div>
+       <div class="modal-footer">
+          <button class="btn btn-primary" type="button">Login</button>
+          <button class="btn btn-danger" type="button">Registrarse</button>
+       </div>
+     </div>
+   </div>
+ </div>
+
  <!-- Start Footer -->
   <footer class="bg-dark" id="tempaltemo_footer">
     <div class="container">

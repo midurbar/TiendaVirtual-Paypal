@@ -145,7 +145,7 @@ function getListaCarrito() {
                 </tr>`;
             });
             tableListaCarrito.innerHTML = html;
-            document.querySelector('#totalGeneral').textContent=res.total;
+            document.querySelector('#totalGeneral').textContent=res.total +' '+ res.moneda;
             btnEliminarCarrito();
         }
     }

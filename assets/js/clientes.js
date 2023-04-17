@@ -1,4 +1,9 @@
 
+const tableLista = document.querySelector("#tableListaProductos tbody");
+document.addEventListener('DOMContentLoaded', function() {
+    getListaProductos();
+});
+
 function getListaProductos() {
     const http = new XMLHttpRequest();
     const url = base_url + 'principal/ListaProductos';
@@ -18,12 +23,10 @@ function getListaProductos() {
                     <td><span class="badge bg-warning">${producto.precio +' '+ res.moneda}</span></td>
                     <td><span class="badge bg-primary">${producto.cantidad}</span></td>
                     <td>${producto.SubTotal}</td>
-                    <td><button class="btn btn-danger btnDeletecart" type="button" prod="${producto.id}"><i class="fas fa-times-circle"></i></button></td>
                 </tr>`;
             });
-            tableListaCarrito.innerHTML = html;
-            document.querySelector('#totalGeneral').textContent=res.total;
-            btnEliminarCarrito();
+            tableLista.innerHTML = html;
+            document.querySelector('#totalProducto').textContent='IMPORTE TOTAL: '+res.total +' '+ res.moneda;
         }
     }
 }
