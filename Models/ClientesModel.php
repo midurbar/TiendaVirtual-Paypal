@@ -37,6 +37,12 @@
             }
             return $res;
         }
+
+        public function getVerificar($correo)
+        {
+            $sql="SELECT * FROM clientes WHERE correo = '$correo'";
+            return $this->select($sql);
+        }
     }
      
 ?>

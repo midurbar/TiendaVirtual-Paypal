@@ -14,6 +14,7 @@ require 'vendor/autoload.php';
         public function index()
         {
             $data['title'] = 'Tu Perfil';
+            $data['verificar'] = $this->model->getVerificar($_SESSION['correo']);
             $this->views->getView('principal', "perfil", $data);
         }
         public function registroDirecto(){
@@ -21,14 +22,22 @@ require 'vendor/autoload.php';
                 $nombre = $_POST['nombre'];
                 $correo = $_POST['correo'];
                 $cont = $_POST['clave'];
-                $token = md5($correo);
-                $hash = password_hash($cont, PASSWORD_DEFAULT);
-                $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
-                if ($data > 0) {
-                    $mensaje = array ('msg' => 'registrado con éxito', 'icono' => 'success', 'token' => $token);
-                }else {
-                    $mensaje = array ('msg' => 'error al registrarse', 'icono' => 'error');
+                $verificar = $this->model->getVerificar($correo);
+                if (empty($verificar)) {
+                    $token = md5($correo);
+                    $hash = password_hash($cont, PASSWORD_DEFAULT);
+                    $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
+                    if ($data > 0) {
+                        $_SESSION['correo'] = $correo;
+                        $_SESSION['nombre'] = $nombre;
+                        $mensaje = array ('msg' => 'registrado con éxito', 'icono' => 'success', 'token' => $token);
+                    }else {
+                        $mensaje = array ('msg' => 'error al registrarse', 'icono' => 'error');
+                    }
+                } else {
+                    $mensaje = array ('msg' => 'YA TIENES UNA CUENTA', 'icono' => 'warning');
                 }
+                
                 echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
                 die();
             }
