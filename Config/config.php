@@ -9,7 +9,7 @@
     const MONEDA = "EUR";
     const CLIENT_ID = "";
     const USER_SMTP = "tiendavirtmdb@gmail.com";
-    const PASS_SMTP = "vydydjfybwghthzy";
+    const PASS_SMTP = "yhismqqtldrceelg";
     const PUERTO_SMTP = 465;
     const HOST_SMTP = "smtp.gmail.com";
     ?>

@@ -13,31 +13,37 @@ require 'vendor/autoload.php';
         }
         public function index()
         {
+            if (empty($_SESSION['correo'])) {
+                header('Location: ' . BASE_URL);
+            }
             $data['title'] = 'Tu Perfil';
             $data['verificar'] = $this->model->getVerificar($_SESSION['correo']);
             $this->views->getView('principal', "perfil", $data);
         }
         public function registroDirecto(){
             if(isset($_POST['nombre']) && isset($_POST['clave'])) {
-                $nombre = $_POST['nombre'];
-                $correo = $_POST['correo'];
-                $cont = $_POST['clave'];
-                $verificar = $this->model->getVerificar($correo);
-                if (empty($verificar)) {
-                    $token = md5($correo);
-                    $hash = password_hash($cont, PASSWORD_DEFAULT);
-                    $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
-                    if ($data > 0) {
-                        $_SESSION['correo'] = $correo;
-                        $_SESSION['nombre'] = $nombre;
-                        $mensaje = array ('msg' => 'registrado con éxito', 'icono' => 'success', 'token' => $token);
-                    }else {
-                        $mensaje = array ('msg' => 'error al registrarse', 'icono' => 'error');
-                    }
+                if (empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['clave'])) {
+                    $mensaje = array ('msg' => 'TODOS LOS CAMPOS SON REQUERIDOS', 'icono' => 'warning');
                 } else {
-                    $mensaje = array ('msg' => 'YA TIENES UNA CUENTA', 'icono' => 'warning');
+                    $nombre = $_POST['nombre'];
+                    $correo = $_POST['correo'];
+                    $cont = $_POST['clave'];
+                    $verificar = $this->model->getVerificar($correo);
+                    if (empty($verificar)) {
+                        $token = md5($correo);
+                        $hash = password_hash($cont, PASSWORD_DEFAULT);
+                        $data = $this->model->registroDirecto($nombre, $correo, $hash, $token);
+                        if ($data > 0) {
+                            $_SESSION['correo'] = $correo;
+                            $_SESSION['nombre'] = $nombre;
+                            $mensaje = array ('msg' => 'registrado con éxito', 'icono' => 'success', 'token' => $token);
+                        }else {
+                            $mensaje = array ('msg' => 'error al registrarse', 'icono' => 'error');
+                        }
+                    } else {
+                        $mensaje = array ('msg' => 'YA TIENES UNA CUENTA', 'icono' => 'warning');
+                    }
                 }
-                
                 echo json_encode($mensaje, JSON_UNESCAPED_UNICODE);
                 die();
             }

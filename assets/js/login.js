@@ -19,47 +19,51 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     //registro
     Registro.addEventListener('click', function () {
-        let formData = new FormData();
-        formData.append('nombre', nombreRegistro.value);
-        formData.append('correo', correoRegistro.value);
-        formData.append('clave', claveRegistro.value);
+        if (nombreRegistro.value == '' || correoRegistro.value == '' || claveRegistro.value == '') {
+            Swal.fire('Aviso', 'ES NECESARIO RELLENAR TODOS LOS CAMPOS', 'warning');
+        } else {
+            let formData = new FormData();
+            formData.append('nombre', nombreRegistro.value);
+            formData.append('correo', correoRegistro.value);
+            formData.append('clave', claveRegistro.value);
 
-        const url = base_url + 'clientes/registroDirecto';
-        const http = new XMLHttpRequest();
-        http.open('POST', url, true);
-        http.send(formData);
-        http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                const res = JSON.parse(this.responseText);
-                Swal.fire('Aviso', res.msg, res.icono);
-                if (res.icono=='success'){
-                    setTimeout(() => {
-                        enviarCorreo(correoRegistro.value, res.token);
-                    }, 2000);
+            const url = base_url + 'clientes/registroDirecto';
+            const http = new XMLHttpRequest();
+            http.open('POST', url, true);
+            http.send(formData);
+            http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire('Aviso', res.msg, res.icono);
+                    if (res.icono=='success'){
+                        setTimeout(() => {
+                            enviarCorreo(correoRegistro.value, res.token);
+                        }, 2000);
+                    }
                 }
-            }
-        };
+            };
+        }
     });
 });
 
 function enviarCorreo(correo, token) {
-        let formData = new FormData();
-        formData.append("token", token);
-        formData.append("correo", correo);
-        const url = base_url + 'clientes/enviarCorreo';
-        const http = new XMLHttpRequest();
-        http.open('POST', url, true);
-        http.send(formData);
-        http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                const res = JSON.parse(this.responseText);
-                Swal.fire('Aviso', res.msg, res.icono);
-                if (res.icono=='success'){
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
-                }
+    let formData = new FormData();
+    formData.append("token", token);
+    formData.append("correo", correo);
+    const url = base_url + 'clientes/enviarCorreo';
+    const http = new XMLHttpRequest();
+    http.open('POST', url, true);
+    http.send(formData);
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            const res = JSON.parse(this.responseText);
+            Swal.fire('Aviso', res.msg, res.icono);
+            if (res.icono=='success'){
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             }
-        };
+        }
+    };
 }
 
