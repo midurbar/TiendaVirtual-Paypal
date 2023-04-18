@@ -70,7 +70,11 @@ require 'vendor/autoload.php';
             die();       
         }
         function verificarCorreo($token){
-            print_r($token);
+            $verificar =$this->model->getToken($token);
+            if (!empty($verificar)) {
+                $data = $this->model->actualizarVerify($verificar['id']);
+                header('Location: ' . BASE_URL . 'clientes');
+            }
         }
         
     }
