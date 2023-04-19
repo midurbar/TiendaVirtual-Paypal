@@ -12,8 +12,6 @@ const claveRegistro=document.querySelector('#claveRegistro');
 const correoLogin=document.querySelector('#correoLogin');
 const claveLogin=document.querySelector('#claveLogin');
 
-const btnModalLogin=document.querySelector('#btnModalLogin');
-
 const modalLogin = new bootstrap.Modal(document.getElementById('modalLogin'));
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -67,19 +65,16 @@ document.addEventListener('DOMContentLoaded', function() {
             http.send(formData);
             http.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    //const res = JSON.parse(this.responseText);
-                    //Swal.fire('Aviso', res.msg, res.icono);
-                    //if (res.icono=='success'){
-                        
-                   //}
+                    const res = JSON.parse(this.responseText);
+                    Swal.fire('Aviso', res.msg, res.icono);
+                    if (res.icono=='success') {
+                        setTimeout(() => {
+                            window.location.reload();
+                        },2000);
+                    }
                 }
             };
         }
-    });
-
-    btnModalLogin.addEventListener('click', function (){
-        modalLogin.show();
     });
 });
 
