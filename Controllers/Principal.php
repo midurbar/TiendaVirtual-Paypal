@@ -98,6 +98,7 @@
                 $total += $SubTotal;
             }
             $array['total'] = number_format($total, 2);
+            $array['totalPaypal'] = $total;
             $array['moneda'] = MONEDA;
             echo json_encode($array, JSON_UNESCAPED_UNICODE);
             die();
