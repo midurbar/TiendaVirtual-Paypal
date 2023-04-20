@@ -47,7 +47,7 @@
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        
+                                        <div id="paypal-button-container"></div>
                                     </div>
                                 </div>
                             </div>
@@ -86,6 +86,7 @@
     <script src="<?php echo BASE_URL . 'assets/js/clientes.js' ?>">
 
     </script>
+    
     <!-- End Script -->
     </body>
     
