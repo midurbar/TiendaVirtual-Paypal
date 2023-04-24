@@ -153,6 +153,12 @@ require 'vendor/autoload.php';
             echo json_encode($mensaje);
             die();
         }
+        //listar productos pendientes
+        public function listarPendientes() {
+            $data = $this->model->getPedidos(1);
+            echo json_encode($data);
+            die();
+        }
         
     }
 ?>

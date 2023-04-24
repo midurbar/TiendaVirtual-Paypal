@@ -84,14 +84,11 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Producto</th>
+                                            <th>Monto</th>
+                                            <th>Fecha</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

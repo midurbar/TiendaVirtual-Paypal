@@ -13,12 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
         dataSrc: ''
       },
       columns: [
-          { data: 'name' },
-          { data: 'hr.position' },
-          { data: 'hr.salary' },
-          { data: 'hr.state_date' },
-          { data: 'contact.office' },
-          { data: 'contact.extn' }
+          { data: 'id_transaccion' },
+          { data: 'monto' },
+          { data: 'fecha' }
       ]
   } );
 

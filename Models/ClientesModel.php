@@ -59,7 +59,7 @@
 
         public function getProducto($id_producto)
         {
-            $sql="SELECT * FROM productos  WHERE id=$id_producto";
+            $sql="SELECT * FROM productos WHERE id=$id_producto";
             return $this->select($sql);
         }
 
@@ -74,6 +74,11 @@
                 $res = 0;
             }
             return $res;
+        }
+
+        public function getPedidos($proceso) {
+            $sql="SELECT * FROM pedidos WHERE proceso = $proceso";
+            return $this->selectAll($sql);
         }
     }
      
