@@ -11,16 +11,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function getListaProductos() {
-    const http = new XMLHttpRequest();
+    let html = '';
     const url = base_url + 'principal/ListaProductos';
+    const http = new XMLHttpRequest();
     http.open('POST', url, true);
     http.send(JSON.stringify(listaCarrito));
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             const res = JSON.parse(this.responseText);
-            console.log(res);
-            let html = '';
-            res.productos.forEach(producto => {
+            if (res.totalPaypal > 0) {
+              res.productos.forEach(producto => {
                 html += `<tr>
                     <td>
                         <img class="img-thumbnail rounded-circle" src="${producto.imagen}" alt="" width="100">
@@ -30,10 +30,17 @@ function getListaProductos() {
                     <td><span class="badge bg-primary">${producto.cantidad}</span></td>
                     <td>${producto.SubTotal}</td>
                 </tr>`;
-            });
-            tableLista.innerHTML = html;
-            document.querySelector('#totalProducto').textContent='IMPORTE TOTAL: '+res.total +' '+ res.moneda;
-            botonPaypal(res.totalPaypal);
+              });
+              tableLista.innerHTML = html;
+              document.querySelector('#totalProducto').textContent='IMPORTE TOTAL: '+res.total +' '+ res.moneda;
+              botonPaypal(res.totalPaypal);
+            }else {
+              tableLista.innerHTML= `<tr>
+                                      <td colspan="5" class="text-center">
+                                        CARRITO VACIO
+                                      </td>
+                                    </tr>`;
+            }
         }
     }
 }
@@ -72,7 +79,14 @@ function registrarPedido(datos) {
     http.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
-            //const res = JSON.parse(this.responseText);
+            const res = JSON.parse(this.responseText);
+            Swal.fire( 'Aviso', res.msg, res.icono);
+            if (res.icono == 'success') {
+              localStorage.removeItem('listaCarrito');
+              setTimeout(() => {
+                window.location.reload();
+              }, 2000);
+            }
         }
     }
 }
