@@ -1,12 +1,26 @@
 
 const tableLista = document.querySelector("#tableListaProductos tbody");
+const tblPendientes= document.querySelector("#tblPendientes");
 
 document.addEventListener('DOMContentLoaded', function() {
     if (tableLista) {
         getListaProductos();
     }
-
-    
+    //Cargar datos pendientes con DataTables
+    $('#tblPendientes').DataTable( {
+      ajax: {
+        url: base_url + 'clientes/listarPendientes',
+        dataSrc: ''
+      },
+      columns: [
+          { data: 'name' },
+          { data: 'hr.position' },
+          { data: 'hr.salary' },
+          { data: 'hr.state_date' },
+          { data: 'contact.office' },
+          { data: 'contact.extn' }
+      ]
+  } );
 
 });
 
