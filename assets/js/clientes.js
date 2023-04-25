@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
           { data: 'id_transaccion' },
           { data: 'monto' },
           { data: 'fecha' }
-      ]
+      ],
+      language,
+      dom,
+      buttons
   } );
 
 });
