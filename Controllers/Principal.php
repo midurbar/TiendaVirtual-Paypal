@@ -5,19 +5,17 @@
             parent::__construct();
             session_start();
         }
-        public function index()
-        {
-           
-        }
         //Vista about
         public function about()
         {
+            $data['perfil'] = 'no';
             $data['title'] = 'Nuestro equipo';
             $this->views->getView('principal', "about", $data);
         }
         //Vista shop
         public function shop($page)
         {
+            $data['perfil'] = 'no';
             $pagina = (empty($page)) ? 1: $page;
             $porPagina = 20;
             $desde = ($pagina -1) * $porPagina;
@@ -31,6 +29,7 @@
         //Vista detail
         public function detail($id_producto)
         {
+            $data['perfil'] = 'no';
             $data['producto'] = $this->model->getProducto($id_producto);
             $id_categoria = $data['producto']['id_categoria'];
             $data['relacionados'] = $this->model->getAleatorios($id_categoria, $data['producto']['id']);
@@ -40,6 +39,7 @@
         //Vista categorias
         public function categorias($datos)
         {
+            $data['perfil'] = 'no';
             $id_categoria = 1;
             $page = 1;
             $array = explode(',', $datos);
@@ -69,12 +69,14 @@
         //Vista contact
         public function contact()
         {
+            $data['perfil'] = 'no';
             $data['title'] = 'Contactos';
             $this->views->getView('principal', "contact", $data);
         }
         //Vista lista deseos
         public function deseo()
         {
+            $data['perfil'] = 'no';
             $data['title'] = 'Tu lista de deseos';
             $this->views->getView('principal', "deseo", $data);
         }

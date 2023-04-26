@@ -16,10 +16,12 @@ require 'vendor/autoload.php';
             if (empty($_SESSION['correoCliente'])) {
                 header('Location: ' . BASE_URL);
             }
+            $data['perfil'] = 'si';
             $data['title'] = 'Tu Perfil';
             $data['verificar'] = $this->model->getVerificar($_SESSION['correoCliente']);
             $this->views->getView('principal', "perfil", $data);
         }
+
         public function registroDirecto(){
             if(isset($_POST['nombre']) && isset($_POST['clave'])) {
                 if (empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['clave'])) {
@@ -168,6 +170,11 @@ require 'vendor/autoload.php';
             $data['moneda'] = MONEDA;
             echo json_encode($data);
             die();
+        }
+
+        public function salir() {
+            session_destroy();
+            header('Location: ' . BASE_URL);
         }
         
     }
