@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
       columns: [
           { data: 'id_transaccion' },
           { data: 'monto' },
-          { data: 'fecha' }
+          { data: 'fecha' },
+          { data: 'accion' }
       ],
       language,
       dom,
@@ -103,4 +104,30 @@ function registrarPedido(datos) {
             }
         }
     }
+}
+
+function verPedido(idPedido) {
+  const mPedido = new bootstrap.Modal(document.getElementById('modalPedido'));
+  const url = base_url + 'clientes/verPedido/' + idPedido;
+  const http = new XMLHttpRequest();
+  http.open('GET', url, true);
+  http.send();
+  http.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+      const res = JSON.parse(this.responseText);
+      let html = '';
+      res.productos.forEach(row => {
+        let subTotal = parseFloat(row.precio) * parseInt(row.cantidad);
+        html += `<tr>
+                  <td>${row.producto}</td>
+                  <td><span class="badge bg-warning">${row.precio +' '+ res.moneda}</span></td>
+                  <td><span class="badge bg-primary">${row.cantidad}</span></td>
+                  <td>${subTotal.toFixed(2)}</td>
+                </tr>`;
+      });
+      document.querySelector('#tablePedidos tbody').innerHTML = html;
+      mPedido.show();
+    }
+  }
 }
