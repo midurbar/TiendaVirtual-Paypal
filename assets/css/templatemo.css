@@ -87,6 +87,7 @@ body, ul, li, p, a, label, input, div {
 
 /* Hero Carousel */
 #template-mo-zay-hero-carousel { background: #efefef !important;}
+li::marker{font-size:0;}
 /* Accordion */
 .templatemo-accordion a { color: #000;}
 .templatemo-accordion a:hover { color: #333d4a;}
