@@ -108,5 +108,11 @@
             die();
         }
 
+        public function busqueda($valor) {
+            $data = $this->model->getBusqueda($valor);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            die();
+        }
+
     }
 ?>
