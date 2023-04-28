@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,18 +21,19 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Acceso</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form id="formulario">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Correo Electrónico</label>
+                                                <input class="form-control" id="email" name="email" value="midurbar@gmail.com" type="email" placeholder="Correo Electrónico" />
+                                                <label for="email">Correo Electrónico</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
-                                                <label for="inputPassword">Contraseña</label>
+                                                <input class="form-control" id="clave" name="clave" value="admin" type="password" placeholder="Contraseña" />
+                                                <label for="clave">Contraseña</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">¿Olvidaste tu contraseña?</a>
-                                                <a class="btn btn-primary" href="index.html">Acceder</a>
+                                                <button type="submit" class="btn btn-primary">Acceder</button>
+                                                
                                             </div>
                                         </form>
                                     </div>
@@ -64,6 +66,7 @@
         <script>
             const base_url = '<?php echo BASE_URL; ?>';
         </script>
+        <script src="<?php echo BASE_URL; ?>assets/js/sweetalert2.all.min.js"></script>
         <script src="<?php echo BASE_URL; ?>assets/js/modulos/login.js"></script>
     </body>
 </html>
