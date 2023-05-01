@@ -32,5 +32,10 @@
             echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
             die();
         }
+
+        public function home() {
+            $data['title'] = 'Panel Administrativo';
+            $this->views->getView('admin/administracion', "index", $data);
+        }
     }
 ?>
