@@ -4,9 +4,9 @@ const clave = document.querySelector('#clave');
 document.addEventListener('DOMContentLoaded', function() {
     frm.addEventListener('submit', function(e){
         e.preventDefault();
-        //if (email.value == '' || clave.value == '') {
-        //    alertas('todos los campos son requeridos', 'warning');
-        //} else {
+        if (email.value == '' || clave.value == '') {
+            alertas('todos los campos son requeridos', 'warning');
+        } else {
             let data = new FormData(this);
             const url = base_url + "admin/validar";
             const http = new XMLHttpRequest();
@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
             http.onreadystatechange= function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
-                    //const res = JSON.parse(this.responseText);
+                    const res = JSON.parse(this.responseText);
                 }
             }
-        //}
+        }
     });
 })
 
