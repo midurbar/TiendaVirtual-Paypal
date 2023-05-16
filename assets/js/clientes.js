@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       language,
       dom,
       buttons
-  } );
+    });
 
 });
 

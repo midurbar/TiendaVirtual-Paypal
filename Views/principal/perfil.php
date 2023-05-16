@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <?php include_once 'Views/template-principal/header.php';?>
+    <?php include_once 'Views/template/header-principal.php';?>
 
 <!-- Start Content -->
     <div class="container py-5">
@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    <?php include_once 'Views/template-principal/footer.php';?>
+    <?php include_once 'Views/template/footer-principal.php';?>
 
     <script src="<?php echo BASE_URL . 'assets/DataTables/datatables.min.js'; ?>"></script>
     <script src="<?php echo BASE_URL; ?>assets/js/es-ES.js"></script>
