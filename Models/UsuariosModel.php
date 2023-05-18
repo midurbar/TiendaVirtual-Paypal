@@ -11,11 +11,18 @@
             $sql="SELECT id, nombres, apellidos, correo, perfil FROM usuarios";
             return $this->selectAll($sql);
         }
+
         public function registrar($nombre, $apellido, $correo, $clave)
         {
             $sql = "INSERT INTO usuarios (nombres, apellidos, correo, clave) VALUES (?,?,?,?)";
             $array = array($nombre, $apellido, $correo, $clave);
             return $this->insertar($sql, $array);
+        }
+
+        public function verificarCorreo($correo)
+        {
+            $sql="SELECT correo FROM usuarios WHERE correo = '$correo'";
+            return $this->select($sql);
         }
     }
      

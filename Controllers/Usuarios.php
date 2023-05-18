@@ -13,6 +13,12 @@
         public function listar()
         {
             $data = $this->model->getUsuarios();
+            for ($i=0; $i < count($data); $i++) { 
+                $data[$i]['accion'] = '<div class="d-flex">
+                                        <button class="btn btn-primary" type="button"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                                    </div>';
+            }
             echo json_encode($data);
             die();
         }
@@ -27,11 +33,16 @@
                     $correo = $_POST['correo'];
                     $clave = $_POST['clave'];
                     $hash = password_hash($clave, PASSWORD_DEFAULT);
-                    $data = $this->model->registrar($nombre, $apellido, $correo, $hash);
-                    if ($data > 0) {
-                        $respuesta = array('msg' => 'usuario registrado', 'icono' => 'success');
+                    $result = $this->model->verificarCorreo($correo);
+                    if (empty($result)) {
+                        $data = $this->model->registrar($nombre, $apellido, $correo, $hash);
+                        if ($data > 0) {
+                            $respuesta = array('msg' => 'usuario registrado', 'icono' => 'success');
+                        } else {
+                            $respuesta = array('msg' => 'error al registrar', 'icono' => 'error');
+                        }
                     } else {
-                        $respuesta = array('msg' => 'error al registrar', 'icono' => 'error');
+                        $respuesta = array('msg' => 'correo ya existe', 'icono' => 'warning');
                     }
                 }
                 echo json_encode($respuesta);
