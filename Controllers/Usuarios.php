@@ -12,11 +12,11 @@
         }
         public function listar()
         {
-            $data = $this->model->getUsuarios();
+            $data = $this->model->getUsuarios(1);
             for ($i=0; $i < count($data); $i++) { 
                 $data[$i]['accion'] = '<div class="d-flex">
                                         <button class="btn btn-primary" type="button"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-danger" type="button"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-danger" type="button" onclick="eliminarUser('.$data[$i]['id'].')"><i class="fas fa-trash"></i></button>
                                     </div>';
             }
             echo json_encode($data);
@@ -48,6 +48,22 @@
                 echo json_encode($respuesta);
             }
             
+            die();
+        }
+        //Eliminar Usuario
+        public function delete($idUser)
+        {
+            if (is_numeric($idUser)) {
+                $data = $this->model->eliminar($idUser);
+                if ($data == 1) {
+                    $respuesta = array('msg' => 'usuario dado de baja', 'icono' => 'success');
+                } else {
+                    $respuesta = array('msg' => 'error al eliminar', 'icono' => 'error');
+                }
+            } else {
+                $respuesta = array('msg' => 'error desconocido', 'icono' => 'error');
+            }
+            echo json_encode($respuesta);
             die();
         }
     }
