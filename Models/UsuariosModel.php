@@ -25,7 +25,7 @@
             return $this->select($sql);
         }
 
-        public function verificarCorreo2($id)
+        public function verificarCorreoId($id)
         {
             $sql="SELECT correo FROM usuarios WHERE id = $id";
             return $this->select($sql);

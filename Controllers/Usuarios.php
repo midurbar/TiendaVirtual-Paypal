@@ -48,7 +48,7 @@
                         }
                     } else {
                         $result = $this->model->verificarCorreo($correo);
-                        $correoPrev = $this->model->verificarCorreo2($id);
+                        $correoPrev = $this->model->verificarCorreoId($id);
                         if (empty($result) || $result == $correoPrev) {
                             $data = $this->model->modificar($nombre, $apellido, $correo, $id);
                             if ($data == 1) {
