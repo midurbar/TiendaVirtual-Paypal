@@ -1,7 +1,9 @@
 const nuevo = document.querySelector('#nuevo_registro');
-const myModal = new bootstrap.Modal(document.getElementById('nuevoModal'));
 const frm = document.querySelector('#frmRegistro');
+const btnAccion = document.querySelector('#btnAccion');
 const titleModal= document.querySelector('#titleModal');
+const myModal = new bootstrap.Modal(document.getElementById('nuevoModal'));
+
 let tblUsuario;
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -26,7 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     //Cargar modal
     nuevo.addEventListener('click', function () {
+        document.querySelector('#id').value = '';
         titleModal.textContent = 'NUEVO USUARIO';
+        btnAccion.textContent = 'Registrar';
+        frm.reset();
+        document.querySelector('#clave').removeAttribute('readonly');
         myModal.show();
     })
     //Submit usuarios
@@ -80,3 +86,24 @@ function eliminarUser(idUser) {
     })
 }
 
+function editUser(idUser) {
+    const url = base_url + "usuarios/edit/" + idUser;
+    const http = new XMLHttpRequest();
+    http.open("GET", url, true);
+    http.send();
+    http.onreadystatechange= function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            const res = JSON.parse(this.responseText);
+            document.querySelector('#id').value = res.id;
+            document.querySelector('#nombre').value = res.nombres;
+            document.querySelector('#apellido').value = res.apellidos;
+            document.querySelector('#correo').value = res.correo;
+            document.querySelector('#clave').value = res.clave;
+            document.querySelector('#clave').setAttribute('readonly', 'readonly');
+            btnAccion.textContent = 'Actualizar';
+            titleModal.textContent = 'MODIFICAR USUARIO';
+            myModal.show();
+        }
+    };
+}
