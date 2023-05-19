@@ -48,7 +48,8 @@
                         }
                     } else {
                         $result = $this->model->verificarCorreo($correo);
-                        if (empty($result)) {
+                        $correoPrev = $this->model->verificarCorreo2($id);
+                        if (empty($result) || $result == $correoPrev) {
                             $data = $this->model->modificar($nombre, $apellido, $correo, $id);
                             if ($data == 1) {
                                 $respuesta = array('msg' => 'usuario modificado', 'icono' => 'success');

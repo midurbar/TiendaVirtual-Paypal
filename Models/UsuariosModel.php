@@ -25,6 +25,12 @@
             return $this->select($sql);
         }
 
+        public function verificarCorreo2($id)
+        {
+            $sql="SELECT correo FROM usuarios WHERE id = $id";
+            return $this->select($sql);
+        }
+
         public function eliminar($idUser)
         {
             $sql="UPDATE usuarios SET estado = ? WHERE id = ?";
