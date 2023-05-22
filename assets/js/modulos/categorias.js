@@ -27,17 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
     //Cargar modal
     nuevo.addEventListener('click', function () {
         document.querySelector('#id').value = '';
+        document.querySelector('#imagen_actual').value = '';
+        document.querySelector('#imagen').value = '';
         titleModal.textContent = 'NUEVA CATEGORIA';
         btnAccion.textContent = 'Registrar';
         frm.reset();
         myModal.show();
     })
-    
-    //Submit usuarios
+
+    //Submit categorias
     frm.addEventListener('submit', function(e){
         e.preventDefault();
         let data = new FormData(this);
-        const url = base_url + "usuarios/registrar";
+        const url = base_url + "categorias/registrar";
         const http = new XMLHttpRequest();
         http.open("POST", url, true);
         http.send(data);
@@ -47,7 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const res = JSON.parse(this.responseText);
                 if (res.icono == 'success') {
                     myModal.hide();
-                    tblUsuario.ajax.reload();
+                    tblCategorias.ajax.reload();
+                    document.querySelector('#imagen').value = '';
                 }
                 Swal.fire('Aviso', res.msg.toUpperCase(), res.icono);
             }
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 })
 
-function eliminarUser(idUser) {
+function eliminarCat(idCat) {
     Swal.fire({
         title: 'Aviso!',
         text: "Estas seguro de que quieres eliminar este registro?",
@@ -66,7 +69,7 @@ function eliminarUser(idUser) {
         confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = base_url + "usuarios/delete/" + idUser;
+            const url = base_url + "categorias/delete/" + idCat;
             const http = new XMLHttpRequest();
             http.open("GET", url, true);
             http.send();
@@ -75,7 +78,7 @@ function eliminarUser(idUser) {
                     console.log(this.responseText);
                     const res = JSON.parse(this.responseText);
                     if (res.icono == 'success') {
-                        tblUsuario.ajax.reload();
+                        tblCategorias.ajax.reload();
                     }
                     Swal.fire('Aviso', res.msg.toUpperCase(), res.icono);
                 }
@@ -84,8 +87,8 @@ function eliminarUser(idUser) {
     })
 }
 
-function editUser(idUser) {
-    const url = base_url + "usuarios/edit/" + idUser;
+function editCat(idCat) {
+    const url = base_url + "categorias/edit/" + idCat;
     const http = new XMLHttpRequest();
     http.open("GET", url, true);
     http.send();
@@ -94,13 +97,10 @@ function editUser(idUser) {
             console.log(this.responseText);
             const res = JSON.parse(this.responseText);
             document.querySelector('#id').value = res.id;
-            document.querySelector('#nombre').value = res.nombres;
-            document.querySelector('#apellido').value = res.apellidos;
-            document.querySelector('#correo').value = res.correo;
-            document.querySelector('#clave').value = res.clave;
-            document.querySelector('#clave').setAttribute('readonly', 'readonly');
+            document.querySelector('#categoria').value = res.categoria;
+            document.querySelector('#imagen_actual').value = res.imagen;
             btnAccion.textContent = 'Actualizar';
-            titleModal.textContent = 'MODIFICAR USUARIO';
+            titleModal.textContent = 'MODIFICAR CATEGORIA';
             myModal.show();
         }
     };

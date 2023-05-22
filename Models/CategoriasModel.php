@@ -31,16 +31,16 @@
             return $this->select($sql);
         }
 
-        public function eliminar($idUser)
+        public function eliminar($idCat)
         {
-            $sql="UPDATE usuarios SET estado = ? WHERE id = ?";
-            $array = array(0, $idUser);
+            $sql="UPDATE categorias SET estado = ? WHERE id = ?";
+            $array = array(0, $idCat);
             return $this->save($sql, $array);
         }
 
-        public function getUsuario($idUser)
+        public function getCategoria($idCat)
         {
-            $sql="SELECT id, nombres, apellidos, correo FROM usuarios WHERE id = $idUser";
+            $sql="SELECT * FROM categorias WHERE id = $idCat";
             return $this->select($sql);
         }
 
