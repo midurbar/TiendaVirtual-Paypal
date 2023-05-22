@@ -48,12 +48,16 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Menu Principal</div>
                             <a class="nav-link" href="<?php echo BASE_URL . 'admin/home'; ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="sb-nav-link-icon"><i class="bx bx-home-circle"></i></div>
                                 Dashboard
                             </a>
                             <a class="nav-link" href="<?php echo BASE_URL . 'usuarios'; ?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Usuarios
+                            </a>
+                            <a class="nav-link" href="<?php echo BASE_URL . 'categorias'; ?>">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
+                                Categorias
                             </a>
                             
                         </div>
