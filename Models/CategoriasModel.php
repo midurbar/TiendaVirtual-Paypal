@@ -25,12 +25,6 @@
             return $this->select($sql);
         }
 
-        public function verificarCorreoId($id)
-        {
-            $sql="SELECT correo FROM usuarios WHERE id = $id";
-            return $this->select($sql);
-        }
-
         public function eliminar($idCat)
         {
             $sql="UPDATE categorias SET estado = ? WHERE id = ?";
