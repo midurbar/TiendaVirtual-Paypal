@@ -1,5 +1,5 @@
 <?php
-    class Categorias extends Controller
+    class Productos extends Controller
     {
         public function __construct() {
             parent::__construct();
@@ -7,14 +7,15 @@
         }
         public function index()
         {
-            $data['title'] = 'categorias';
-            $this->views->getView('admin/categorias', "index", $data);
+            $data['title'] = 'productos';
+            $data['categorias'] = $this->model->getCategorias();
+            $this->views->getView('admin/productos', "index", $data);
         }
         public function listar()
         {
-            $data = $this->model->getCategorias(1);
+            $data = $this->model->getProductos(1);
             for ($i=0; $i < count($data); $i++) { 
-                $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['categoria'] . '" width="50">';
+                $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['nombre'] . '" width="50">';
                 $data[$i]['accion'] = '<div class="d-flex">
                                         <button class="btn btn-primary" type="button" onclick="editCat('.$data[$i]['id'].')"><i class="fas fa-edit"></i></button>
                                         <button class="btn btn-danger" type="button" onclick="eliminarCat('.$data[$i]['id'].')"><i class="fas fa-trash"></i></button>
@@ -25,14 +26,18 @@
         }
         public function registrar()
         {
-            if (isset($_POST['categoria'])) {
+            if (isset($_POST['nombre']) && isset($_POST['precio'])) {
+                $nombre = $_POST['nombre'];
+                $precio = $_POST['precio'];
+                $cantidad = $_POST['cantidad'];
+                $descripcion = $_POST['descripcion'];
                 $categoria = $_POST['categoria'];
                 $imagen=$_FILES['imagen'];
                 $tmp_name = $imagen['tmp_name'];
                 $id = $_POST['id'];
-                $ruta = 'assets/img/categorias/';
+                $ruta = 'assets/img/productos/';
                 $nombreImg = date('YmdHis');
-                if (empty($_POST['categoria'])) {
+                if (empty($nombre) || empty($precio) || empty($cantidad)) {
                     $respuesta = array('msg' => 'todos los campos son requeridos', 'icono' => 'warning');
                 } else {
                     if (!empty($imagen['name'])) {
@@ -44,19 +49,14 @@
                     }
                     
                     if (empty($id)) {
-                        $result = $this->model->verificarCategoria($categoria);
-                        if (empty($result)) {
-                            $data = $this->model->registrar($categoria, $destino);
-                            if ($data > 0) {
-                                if (!empty($imagen['name'])) {
-                                    move_uploaded_file($tmp_name, $destino);
-                                }
-                                $respuesta = array('msg' => 'categoria registrada', 'icono' => 'success');
-                            } else {
-                                $respuesta = array('msg' => 'error al registrar', 'icono' => 'error');
+                        $data = $this->model->registrar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria);
+                        if ($data > 0) {
+                            if (!empty($imagen['name'])) {
+                                move_uploaded_file($tmp_name, $destino);
                             }
+                            $respuesta = array('msg' => 'producto registrado', 'icono' => 'success');
                         } else {
-                            $respuesta = array('msg' => 'la categoria ya existe', 'icono' => 'warning');
+                            $respuesta = array('msg' => 'error al registrar', 'icono' => 'error');
                         }
                     } else {
                         $data = $this->model->modificar($categoria, $destino, $id);
