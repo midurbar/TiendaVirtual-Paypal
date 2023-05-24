@@ -59,12 +59,12 @@
                             $respuesta = array('msg' => 'error al registrar', 'icono' => 'error');
                         }
                     } else {
-                        $data = $this->model->modificar($categoria, $destino, $id);
+                        $data = $this->model->modificar($nombre, $descripcion, $precio, $cantidad, $destino, $categoria, $id);
                         if ($data == 1) {
                             if (!empty($imagen['name'])) {
                                 move_uploaded_file($tmp_name, $destino);
                             }
-                            $respuesta = array('msg' => 'categoria modificada', 'icono' => 'success');
+                            $respuesta = array('msg' => 'producto modificado', 'icono' => 'success');
                         } else {
                             $respuesta = array('msg' => 'error al modificar', 'icono' => 'error');
                         }
