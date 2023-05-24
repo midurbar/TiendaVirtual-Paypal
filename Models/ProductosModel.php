@@ -25,16 +25,16 @@
             return $this->insertar($sql, $array);
         }
 
-        public function eliminar($idCat)
+        public function eliminar($idProd)
         {
-            $sql="UPDATE categorias SET estado = ? WHERE id = ?";
-            $array = array(0, $idCat);
+            $sql="UPDATE productos SET estado = ? WHERE id = ?";
+            $array = array(0, $idProd);
             return $this->save($sql, $array);
         }
 
-        public function getCategoria($idCat)
+        public function getProducto($idProd)
         {
-            $sql="SELECT * FROM categorias WHERE id = $idCat";
+            $sql="SELECT * FROM productos WHERE id = $idProd";
             return $this->select($sql);
         }
 

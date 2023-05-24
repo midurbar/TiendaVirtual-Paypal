@@ -3,6 +3,9 @@ const btnAccion = document.querySelector('#btnAccion');
 
 let tblProductos;
 
+var firstTabEl = document.querySelector('#myTab li:last-child button')
+var firstTab = new bootstrap.Tab(firstTabEl)
+
 document.addEventListener('DOMContentLoaded', function() {
 
     tblProductos = $('#tblProductos').DataTable({
@@ -49,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-function eliminarCat(idCat) {
+function eliminarProd(idProd) {
     Swal.fire({
         title: 'Aviso!',
         text: "Estas seguro de que quieres eliminar este registro?",
@@ -60,7 +63,7 @@ function eliminarCat(idCat) {
         confirmButtonText: 'Si, Eliminar!'
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = base_url + "categorias/delete/" + idCat;
+            const url = base_url + "productos/delete/" + idProd;
             const http = new XMLHttpRequest();
             http.open("GET", url, true);
             http.send();
@@ -69,7 +72,7 @@ function eliminarCat(idCat) {
                     console.log(this.responseText);
                     const res = JSON.parse(this.responseText);
                     if (res.icono == 'success') {
-                        tblCategorias.ajax.reload();
+                        tblProductos.ajax.reload();
                     }
                     Swal.fire('Aviso', res.msg.toUpperCase(), res.icono);
                 }
@@ -78,8 +81,8 @@ function eliminarCat(idCat) {
     })
 }
 
-function editCat(idCat) {
-    const url = base_url + "categorias/edit/" + idCat;
+function editProd(idProd) {
+    const url = base_url + "productos/edit/" + idProd;
     const http = new XMLHttpRequest();
     http.open("GET", url, true);
     http.send();
@@ -88,11 +91,14 @@ function editCat(idCat) {
             console.log(this.responseText);
             const res = JSON.parse(this.responseText);
             document.querySelector('#id').value = res.id;
-            document.querySelector('#categoria').value = res.categoria;
+            document.querySelector('#nombre').value = res.nombre;
+            document.querySelector('#precio').value = res.precio;
+            document.querySelector('#cantidad').value = res.cantidad;
+            document.querySelector('#categoria').value = res.id_categoria;
+            document.querySelector('#descripcion').value = res.descripcion;
             document.querySelector('#imagen_actual').value = res.imagen;
             btnAccion.textContent = 'Actualizar';
-            titleModal.textContent = 'MODIFICAR CATEGORIA';
-            myModal.show();
+            firstTab.show();
         }
     };
 }

@@ -17,8 +17,8 @@
             for ($i=0; $i < count($data); $i++) { 
                 $data[$i]['imagen'] = '<img class="img-thumbnail" src="' . $data[$i]['imagen'] . '" alt="' . $data[$i]['nombre'] . '" width="50">';
                 $data[$i]['accion'] = '<div class="d-flex">
-                                        <button class="btn btn-primary" type="button" onclick="editCat('.$data[$i]['id'].')"><i class="fas fa-edit"></i></button>
-                                        <button class="btn btn-danger" type="button" onclick="eliminarCat('.$data[$i]['id'].')"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-primary" type="button" onclick="editProd('.$data[$i]['id'].')"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" type="button" onclick="eliminarProd('.$data[$i]['id'].')"><i class="fas fa-trash"></i></button>
                                     </div>';
             }
             echo json_encode($data);
@@ -75,13 +75,13 @@
             
             die();
         }
-        //Eliminar Categoria
-        public function delete($idCat)
+        //Eliminar Producto
+        public function delete($idProd)
         {
-            if (is_numeric($idCat)) {
-                $data = $this->model->eliminar($idCat);
+            if (is_numeric($idProd)) {
+                $data = $this->model->eliminar($idProd);
                 if ($data == 1) {
-                    $respuesta = array('msg' => 'categoria dada de baja', 'icono' => 'success');
+                    $respuesta = array('msg' => 'producto dado de baja', 'icono' => 'success');
                 } else {
                     $respuesta = array('msg' => 'error al eliminar', 'icono' => 'error');
                 }
@@ -91,12 +91,12 @@
             echo json_encode($respuesta);
             die();
         }
-        //Editar Categoria
-        public function edit($idCat)
+        //Editar Producto
+        public function edit($idProd)
         {
-            if (is_numeric($idCat)) {
+            if (is_numeric($idProd)) {
                 
-                $data = $this->model->getCategoria($idCat);
+                $data = $this->model->getProducto($idProd);
                 echo json_encode($data, JSON_UNESCAPED_UNICODE);
             };
 
