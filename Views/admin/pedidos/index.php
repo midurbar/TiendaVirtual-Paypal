@@ -38,8 +38,25 @@
         </div>
         <div class="tab-pane fade" id="pedidosFinalizados" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             <div class="card">
-                <div class="card-body p-5">
-
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-hover align-middle" style="width: 100%;" id="tblFinalizados">
+                        <thead>
+                            <tr>
+                                <th>Id Transacción</th>
+                                <th>Monto</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th>Correo</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Dirección</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

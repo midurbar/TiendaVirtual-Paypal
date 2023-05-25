@@ -1,4 +1,4 @@
-let tblPendientes;
+let tblPendientes, tblFinalizados;
 
 var firstTabEl = document.querySelector('#myTab li:last-child button')
 var firstTab = new bootstrap.Tab(firstTabEl)
@@ -7,7 +7,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     tblPendientes = $('#tblPendientes').DataTable({
         ajax: {
-          url: base_url + 'pedidos/listar',
+          url: base_url + 'pedidos/listarPedidos',
+          dataSrc: ''
+        },
+        columns: [
+            { data: 'id_transaccion' },
+            { data: 'monto' },
+            { data: 'estado' },
+            { data: 'fecha' },
+            { data: 'email' },
+            { data: 'nombre' },
+            { data: 'apellido' },
+            { data: 'direccion' },
+            { data: 'accion' }
+
+        ],
+        language,
+        dom,
+        buttons
+    });
+
+    tblFinalizados = $('#tblFinalizados').DataTable({
+        ajax: {
+          url: base_url + 'pedidos/listarFinalizados',
           dataSrc: ''
         },
         columns: [
@@ -31,18 +53,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-function eliminarProd(idProd) {
+function cambiarProceso(idPedido) {
     Swal.fire({
         title: 'Aviso!',
-        text: "Estas seguro de que quieres eliminar este registro?",
+        text: "Estas seguro de que quere cambiar el estado de este registro?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, Eliminar!'
+        confirmButtonText: 'Si, Cambiar!'
     }).then((result) => {
         if (result.isConfirmed) {
-            const url = base_url + "productos/delete/" + idProd;
+            const url = base_url + "pedidos/update/" + idPedido;
             const http = new XMLHttpRequest();
             http.open("GET", url, true);
             http.send();
@@ -51,7 +73,7 @@ function eliminarProd(idProd) {
                     console.log(this.responseText);
                     const res = JSON.parse(this.responseText);
                     if (res.icono == 'success') {
-                        tblProductos.ajax.reload();
+                        tblPendientes.ajax.reload();
                     }
                     Swal.fire('Aviso', res.msg.toUpperCase(), res.icono);
                 }
