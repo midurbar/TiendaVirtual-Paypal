@@ -15,7 +15,21 @@
             $data = $this->model->getPedidos(1);
             for ($i=0; $i < count($data); $i++) { 
                 $data[$i]['accion'] = '<div class="d-flex">
-                                        <button class="btn btn-info" type="button" onclick="cambiarProceso('.$data[$i]['id'].')"><i class="fas fa-check-circle"></i></button>
+                                        <button class="btn btn-success" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button>
+                                        <button class="btn btn-info" type="button" onclick="cambiarProceso('.$data[$i]['id'].', 2)"><i class="fas fa-check-circle"></i></button>
+                                    </div>';
+            }
+            echo json_encode($data);
+            die();
+        }
+
+        public function listarProceso()
+        {
+            $data = $this->model->getPedidos(2);
+            for ($i=0; $i < count($data); $i++) { 
+                $data[$i]['accion'] = '<div class="d-flex">
+                                        <button class="btn btn-success" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button>
+                                        <button class="btn btn-info" type="button" onclick="cambiarProceso('.$data[$i]['id'].', 3)"><i class="fas fa-check-circle"></i></button>
                                     </div>';
             }
             echo json_encode($data);
@@ -27,17 +41,20 @@
             $data = $this->model->getPedidos(3);
             for ($i=0; $i < count($data); $i++) { 
                 $data[$i]['accion'] = '<div class="d-flex">
-                                        <button class="btn btn-danger" type="button" onclick="eliminarProd('.$data[$i]['id'].')"><i class="fas fa-trash"></i></button>
+                                        <button class="btn btn-success" type="button" onclick="verPedido('.$data[$i]['id'].')"><i class="fas fa-eye"></i></button>
                                     </div>';
             }
             echo json_encode($data);
             die();
         }
 
-        public function update($idPedido)
+        public function update($datos)
         {
+            $array = explode(',', $datos);
+            $idPedido = $array[0];
+            $proceso = $array[1];
             if (is_numeric($idPedido)) {
-                $data = $this->model->actualizarEstado(2, $idPedido);
+                $data = $this->model->actualizarEstado($proceso, $idPedido);
                 if ($data == 1) {
                     $respuesta = array('msg' => 'pedido actualizado', 'icono' => 'success');
                 } else {
