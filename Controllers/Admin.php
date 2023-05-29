@@ -36,6 +36,10 @@
 
         public function home() {
             $data['title'] = 'Panel Administrativo';
+            $data['pendientes'] = $this->model->getTotales(1);
+            $data['procesos'] = $this->model->getTotales(2);
+            $data['finalizados'] = $this->model->getTotales(3);
+            $data['productos'] = $this->model->getProductos();
             $this->views->getView('admin/administracion', "index", $data);
         }
 
