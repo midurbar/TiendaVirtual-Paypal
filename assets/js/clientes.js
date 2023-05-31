@@ -2,6 +2,10 @@
 const tableLista = document.querySelector("#tableListaProductos tbody");
 const tblPendientes= document.querySelector("#tblPendientes");
 
+const estadoEnviado = document.querySelector('#estadoEnviado');
+const estadoProceso = document.querySelector('#estadoProceso');
+const estadoCompletado = document.querySelector('#estadoCompletado');
+
 document.addEventListener('DOMContentLoaded', function() {
     if (tableLista) {
         getListaProductos();
@@ -107,6 +111,9 @@ function registrarPedido(datos) {
 }
 
 function verPedido(idPedido) {
+  estadoEnviado.classList.remove('services-icon-wap');
+  estadoProceso.classList.remove('services-icon-wap');
+  estadoCompletado.classList.remove('services-icon-wap');
   const mPedido = new bootstrap.Modal(document.getElementById('modalPedido'));
   const url = base_url + 'clientes/verPedido/' + idPedido;
   const http = new XMLHttpRequest();
@@ -117,6 +124,13 @@ function verPedido(idPedido) {
       console.log(this.responseText);
       const res = JSON.parse(this.responseText);
       let html = '';
+      if (res.pedido.proceso == 1) {
+        estadoEnviado.classList.add('services-icon-wap');
+      } else if (res.pedido.proceso == 2) {
+        estadoProceso.classList.add('services-icon-wap');
+      } else {
+        estadoCompletado.classList.add('services-icon-wap');
+      }
       res.productos.forEach(row => {
         let subTotal = parseFloat(row.precio) * parseInt(row.cantidad);
         html += `<tr>

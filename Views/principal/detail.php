@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-5 mt-5">
                     <div class="card mb-3">
-                        <img class="card-img img-fluid" src="<?php echo $data['producto']['imagen']; ?>" alt="<?php echo $data['producto']['nombre']; ?>"
+                        <img class="card-img img-fluid" src="<?php echo BASE_URL . $data['producto']['imagen']; ?>" alt="<?php echo $data['producto']['nombre']; ?>"
                             id="product-detail">
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     <div class="p-2 pb-3">
                     <div class="product-wap card rounded-0">
                         <div class="card rounded-0">
-                            <img class="card-img rounded-0 img-fluid" src="<?php echo $producto['imagen']; ?>">
+                            <img class="card-img rounded-0 img-fluid" src="<?php echo BASE_URL . $producto['imagen']; ?>">
                             <div
                                 class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">

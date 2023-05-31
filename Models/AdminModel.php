@@ -8,13 +8,13 @@
 
         public function getUsuario($correo)
         {
-            $sql="SELECT * FROM usuarios WHERE correo = $correo";
+            $sql="SELECT * FROM usuarios WHERE correo = '$correo'";
             return $this->select($sql);
         }
 
         public function getTotales( $proceso)
         {
-            $sql="SELECT COUNT(*) AS total FROM pedidos WHERE proceso = $proceso";
+            $sql="SELECT COUNT(*) AS total FROM pedidos WHERE proceso = '$proceso'";
             return $this->select($sql);
         }
 
@@ -22,6 +22,18 @@
         {
             $sql="SELECT COUNT(*) AS total FROM productos WHERE estado = 1";
             return $this->select($sql);
+        }
+
+        public function productosMinimos()
+        {
+            $sql="SELECT * FROM productos WHERE cantidad < 15 AND estado = 1 ORDER BY cantidad DESC LIMIT 5";
+            return $this->selectAll($sql);
+        }
+
+        public function topProductos()
+        {
+            $sql="SELECT producto, SUM(cantidad) AS total FROM detalle_pedidos GROUP BY id_producto ORDER BY total DESC LIMIT 5";
+            return $this->selectAll($sql);
         }
     }
      

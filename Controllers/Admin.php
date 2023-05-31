@@ -43,6 +43,18 @@
             $this->views->getView('admin/administracion', "index", $data);
         }
 
+        public function productosMinimos() {
+            $data = $this->model->productosMinimos();
+            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            die();
+        }
+
+        public function topProductos() {
+            $data = $this->model->topProductos();
+            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            die();
+        }
+
         public function salir() {
             session_destroy();
             header('Location: ' . BASE_URL);

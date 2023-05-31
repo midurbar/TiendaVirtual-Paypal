@@ -11,10 +11,7 @@
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Pago</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Pendientes</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="completados-tab" data-bs-toggle="tab" data-bs-target="#completados-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Completados</button>
+                    <button class="nav-link" id="pendientes-tab" data-bs-toggle="tab" data-bs-target="#pendientes-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Pedidos</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -113,9 +110,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="completados-tab-pane" role="tabpanel" aria-labelledby="completados-tab" tabindex="0">
-                    ...
-                </div>
             </div>
            
         <?php }else { ?>
@@ -142,21 +136,21 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6 col-lg-4 pb-5">
-                            <div class="h-100 py-5 services-icon-wap shadow">
+                            <div class="h-100 py-5 services-icon-wap shadow" id="estadoEnviado">
                                 <div class="h1 text-util text-center"><i class="fa fa-truck fa-lg"></i></div>
-                                <h2 class="h5 mt-4 text-center">Enviado</h2>
+                                <h2 class="h5 mt-4 text-center">Pendiente</h2>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 pb-5">
-                            <div class="h-100 py-5 services-icon-wap shadow">
+                            <div class="h-100 py-5 services-icon-wap shadow" id="estadoProceso">
                                 <div class="h1 text-util text-center"><i class="fa fa-exchange-alt"></i></div>
                                 <h2 class="h5 mt-4 text-center">Proceso</h2>
                             </div>
                         </div>
 
                         <div class="col-md-6 col-lg-4 pb-5">
-                            <div class="h-100 py-5 services-icon-wap shadow">
+                            <div class="h-100 py-5 services-icon-wap shadow" id="estadoCompletado">
                                 <div class="h1 text-util text-center"><i class="fa fa-percent"></i></div>
                                 <h2 class="h5 mt-4 text-center">Completado</h2>
                             </div>
